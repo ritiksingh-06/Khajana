@@ -1,0 +1,947 @@
+
+            Web name:- onworks.net
+            uptime :- cmd to check when you shut down your system last time.
+
+
+
+
+
+
+
+
+Touch command:-   ye command new empty file create karne k kaam aati h.
+                  but if koi existing file (a.txt) ko fir se touch se create krne me us file k data wahi rahta h, or name to same hi rahega
+                  but us file k creating time change ho kr current time ho jayega. 
+ 
+ 
+ *** Terminal open hone se pahle .bashrc file ko pura read krta h
+                  
+ *** Agar hm .bashrc me ja k sabse neeche cal y fir koi bhi command likh denge bs to koi new terminal open krte hi sabse pahle cal (likhi huyi command) execute ho jayegi.
+ 
+ 
+ *** cp command:-  cp /B/J/hello.txt /J/M/               ----->>>> agar file k name change nhi krna h to aage kuchh nhi likhna h 
+                   cp /B/J/hello.txt /J/M/file.txt       ----->>>> agar file k name change krna h to uske liye file k name likhna h
+                   
+      ----->>> Agar kisi directory ko copy krna h to "cp -r" k use krte hn
+      ----->>> or jab hm cp k use krte hn to jis user se hm cp k use krte hn to copy hone par waha us file k owner or group whi user ho jata h.
+      ----->>> tab hm "cp -P" k use krte hn jisse file/dir copy k bad uske owner whi rahte hn.
+      
+ *** chown ritik:ritik /home/dir1
+ 
+ *** usermod:- 
+ 
+       * User ki home dir change krne k liye:-   "sudo usermod -d /opt/jack jack"
+       
+ 
+ ***  bin    --->>>>  binary /commands
+      sbin   --->>>>  only root user can access these commands
+      boot   --->>>>  kernal presents here
+      proc   --->>>>  
+      
+      uname cmd -->>  get your OS name, "uname -r" we can check version of our OS
+      
+      
+      alias mytime = "date +%T"  to set a nickname for a command
+      unalias mytime,   to unset the nickname for the particullar command
+      
+ *** Commands into vim,
+      
+      dd --- cut, delete
+      u  --- undo
+      yy --- copy
+      i  --- insert
+      
+      
+ *** adduser -s /sbin/sh username       {to create a user with shell name "sh"}
+     usermod -s /bin/bash username      {to change the shell of user by using command}
+      
+      
+      
+  *****Advantage of LInux*****
+      
+      speed of working 
+      cli use
+      light weight
+      best security
+      best privecy
+      open source
+      multi tasking
+      multi user
+      
+      
+*** Compiler:- executing code in one shot, too fast comparativelly Interpreter.
+
+*** Interpreter :- executing code line by line, slow
+
+*** env file:- the place where all variables are saved,  export x="hello world"---->>>>  to create a temperary variable.
+       
+      
+      
+      
+      
+      *******  Types of shell **********
+      
+   sh :- basic, light weight, history not exist, tab not exist, unable to use aero buttons 
+   csh
+   bash :- default shell
+   fish :- 
+   
+   
+ *** chsh    command to change shell for loginned user
+ 
+ /dev/null   ==>>  esme kuchh bhi likho sb 1 ms se bhi km time me delete ho jata h
+ 
+ 
+ head /etc/passwd    --->>> to get only 10 first lines of any file (/etc/passwd) you want
+ head -5 /etc/passwd --->>> to get only 5 first lines of any file you want.
+ tail -5 /etc/passwd --->>> to get only 5 last lines of any file you want.
+ 
+ head -7 raam.txt | tail -4 --->>> to get lines 4th to 7th of raam.txt file
+ 
+ wc -l /etc/passwd ---->>>> to get the no. of lines into the given file
+ wc -w /etc/passwd ---->>>> to get the no. of words into the given file
+ wc -c /etc/passwd ---->>>> to get the no. of charectors into the given file
+ 
+ date > mydate.txt
+ cal > mydate.txt
+ date >> mydate.txt
+ widjc >> mydate.txt       the errors are not gonna to save into mydate.txt file
+ widjc 2>> mydate.txt      to save errors also
+ date 2>> mydate.txt       this output is not a error, this output is not gonna save into file mydate.txt
+ 
+ date &>> mydate.txt       it save the output in both ways error or correct.
+ 
+ 
+ 
+ ******* Download & Extract files by CLI                              (ls -lh, to show size of file as if 1000byte then 1kb...)
+ 
+      **abc.tar is simillar to abc.zip
+      
+   ***Creating .tar files:-     tar -czf hey.tar hello.txt             -c :- to create file               hello.txt :- file to tar
+                                                                       -z :- convert to zip               hey.tar   :- new tar file
+                                                                       -f :- named your tar file
+   ***Extract .tar files        tar -xf hey.tar           -x :- extract
+                                                          -f :- name of file to extract
+      * yes, this cmd can wrote 20cr time the word written in front of yes in only 1 sec.        Ex. yes hello > myfile.txt
+      
+      
+      
+               Ex.      mkdir yesfile               --->>  create a dir to work on it
+                        yes "I'm Ritik" > hey.txt   --->>  creating a file with text "I'm Ritik" may be 20cr. times by yes cmd
+                         ** press "ctrl+c" at just less than 1 sec 
+                        ls -lh hey.txt              --->>  check the size of file hey.txt in Mb
+                        tar -czf hello.tar hey.txt  --->>  to convert into .tar file
+                        rm hey.txt                  --->>  remove the txt file
+                        tar -xf hello.tar           --->>  now extract the .tar file
+                        
+                        
+                        
+                        
+                        
+                        
+                *****************<<<<<<<<---------User Management--------->>>>>>>>************************
+                        
+  *** Type of users        1. Super user (root)                user id of root = 0
+                           2. System user                      user id of system users = 1 to 999
+                           3. Normal/General/Local users       user id of normal users = 1000 +
+                           
+  *** File to see details of all users :-  /etc/passwd
+  
+       jack:x:1016:1013:,,,:/home/jack:/bin/bash  ---->>>> username:pass details:Uid:Gid:some info:home dir of user:shell used by user
+       
+       
+       
+  *** Type of groups :-    cat /etc/group  --->> command to check all groups 
+  
+      1. Primary group :- this type of group creates when a user creates.
+      2. Secondary group :- this type of groups are created by "groupadd" command
+      
+  * groupadd groupname              --->>> to create group
+  * groupdel groupname              --->>> to delete group without any msg
+    delgroup groupname              --->>> to delete group with msg of deleting group
+  * usermod -aG groupname username  --->>> to add a user into a group                     |               How r=4, w=2, x=1 for permission
+  * deluser username groupname      --->>> to remove user from group                      |   place of r = r__ = 1*2^2 + 0*2^1 + 0*2^0 = 4
+                                                                                          |   place of w = _w_ = 0*2^2 + 1*2^1 + 0*2^0 = 2
+  ** chown username:groupname filename  ---->>>> to change owner & group of file          |   place of x = __x = 0*2^2 + 0*2^1 + 1*2^0 = 1
+   * chown username filename            ---->>>> to change only owner of file             |
+   * chown :groupname filename          ---->>>> to change only group of file             |
+   
+  ** chmod a+rwx a.txt ----->>>> to give all permissions to everyone (owner, group, others)
+   
+  ** chown -R username:groupname A    ---->>>> to change ownership of A with their childs  (means A k andar sare files or dirs ki ownership bhi change ho jayegi)
+  
+  ** grep -i hello     ---->>>>>>>     search with case incensitive
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+
+                *****************<<<<<<<<---------Shell scripting--------->>>>>>>>************************
+                
+                
+ * sudo -sH  --->>>  you got your present working dir but
+ 		
+ * create file with extention (.sh) & give execution permission to run this file as command by using (./filename.sh) or bash (filename.sh),
+   ** wrote some code at there like, echo "Hello all I'm $USER"  |  ehco "Today date is $`date +%F`"
+   
+   
+ * Local variable :- you can use this type of variables at that place, where you create it,            x=`expr $a + $b`
+ * Global variable :- you can use these variables at any where you want to use,                 export x=`expr $a + $b`
+ * some more variables like $0 $1 $2 $3 $4 $5
+ 
+ ** echo $? ,  after running this command you can get output   0 or 127
+      0 :- if your last ran command ran successfully, then you can get output 0
+     127:- if your last ran command gives error or unable to successfully run then, you can get output 127
+     
+ ***Conditions:-  Ex.            if [ "$a" == "y" ]
+                                 then
+                                 echo "Hello World"
+                                 elif [ "$a" == "n" ]
+                                 then
+                                 echo "Hello everyone"
+                                 else
+                                 echo "None"
+                                 
+                                 
+ ***Loops :-   Ex.    for i in {1..5}
+ 		      #for i in seq 5
+ 		      #for i in 1 2 3 4 5
+                      do 
+                      echo $i
+                      done         
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                   *************   Networking  **************
+                   
+                   
+  ** window me Virtual box se connect hone pr hame IP window provide karata h jisse hm use ping or ssh nhi kr skte to eske liye hme server ko direct router se connect krne k liye VB ki setting -->> Network -->> Bridged Adapter pr set krna padta h.
+                     
+    Networking is as like as communication between two person
+        Requirements to communicate :- Capability, same Language, same Medium
+        
+        For system requirement
+               1. Capability      -->>> NIC card
+               2. Medium      ---- (i) Wired
+                                   (ii) Wireless  -------- Router, Hub, Switch
+               3. Language   ---->>> Protocol       (i) TCP (Transmission Control Protocol)
+                                                    (ii) UDP (User Datagram Protocol) 
+               
+               
+          1. Hub   :- esse connected user1 agar kisi ko kuchh send krta h to, wo msg hub se connected sare users dekh or use kr skte hn.
+          2. Switch:- eske use se agar koi user kisi ko kuchh send krta h to, wo msg switch se connected whi user dekh sakta h jise wo msg send kiya gaya h, ek switch se connected user kisi dusare switch se connected user se baat nhi kr sakta h.
+          3. Router:- esme bhi hm jise msg send krte hn only whi ese dekh or use kr skta h, but router kisi ek router se connected user kisi dusare router se connected user se bhi baat krwa skta h agar wo user capable h to.
+          
+          
+          <<<<<<<<<<<<<<<<<------------     IP     ------------->>>>>>>>>>>>>>>>>>
+          
+          
+          1. Private IP     ---->>> ye IP router users ko deta h.
+          2. Public IP      ---->>> ye IP ISP router ko di jati h.
+          
+      Ranges of Private IPs :--
+              1.    10.0.0.0 --- 10.255.255.255
+              2.    192.168.0.0 --- 192.168.255.255
+              3.    172.16.0.0 --- 172.31.255.255
+              
+              
+      *** Subnet/Netmask 
+         *Class A --->>> 255.0.0.0       available IPs = 2^24
+         *Class B --->>> 255.255.0.0     available IPs = 2^16
+         *Class C --->>> 255.255.255.255 available IPs = 2^8
+         
+         
+   ** Kisi dusare system se baat krne k liye only IP ek complete address nhi hota h, because wo to only system tak hi rahta h, or us system k andar bahut sare apps hote hn jisse aapko pta hi nhi chalega ki aap kis app k through baat krna chahte hn.
+   
+   ** To eske liye IP k sath Port no. use hote hn jiski size 16 bits hoti h, means aap ek IP se only 2^16 apps ek sath chala sakte hn.
+   
+   ** Sari webs 
+          
+          
+          
+          
+          
+      
+ *** Commands to get the name of OS
+ cat /etc/os-release  --->> show name of OS and it's version name
+ hostnamectl          --->> show name of OS and it's version name
+ uname                --->> show name of Kernal 
+ uname -v             --->> show version of kernal and name of OS
+ 
+ *** Checking who is login into server
+     pinky --->> to check who is login into server
+     who   --->> show who is logged on
+     w     --->> show who is logged on and "what they are doing"
+     
+ *** Make log out a client user by server side
+     killall -u {username}     Ex. killall -u vivek.
+     
+ *** Port no. of some important protocols              (netstat -ntlp,    cmd to check how many ports are active)
+   RDP  :- 3389
+   Ssh  :- 22
+   http :- 80
+   https:- 443
+   
+ *** netstat -ntlp,    cmd to check how many ports are active
+ *** lsblk,    cmd to check used storage
+   
+   
+ *** How to generate ssh key in client machine    :- ssh-keygen
+     * ssh-keygen,  after run this command we got a key pairs (private & public keys), private key client side me usi user k pas rahti h or public key ko server k pas copy krna hota h, copy eske liye cmd (ssh-copy-id username@ipaddress)
+     
+     Ex. :- ssh-copy-id ritik@192.168.1.10
+             Es command ko chalate hi ssh public key jisme save h wo folder (.ssh) client side se copy hoke server side me paste ho jata h or .ssh k andar ki file jisme ssh public key save h wo (id_rsa.pub) rename ho krke (authorized_keys) ho jati h.
+     
+   **Where private and public is getting stored in client machine
+   
+     -- ssh key alws stores in users home dir  
+       Ex. :- if a user name is harry then, --- private /home/harry/.ssh/id_rsa & public key /home/harry/.ssh/id_rsa.pub
+       
+    **Note :- root user has home directory as /root/.ssh/{id_rsa,id_rsa.pub}
+    
+    
+ ***To copy a.txt file from client to server             --->>scp a.txt ritik@192.168.1.3:/home/ritik/        (To copy a folder use -r)
+ 
+ ***To download a.txt file from server to client         --->>scp ritik@192.168.1.3:/home/ritik/a.txt .        (To copy a folder use -r)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ *** DNS(Domaine Name System)(Name Server) :- It is as same as Contact book
+ 
+ Jab hm kisi website ko pahli bar (uske domain name k through) connect krte hn to hme us web ki ip chahiye hoti h, to hamara laptop sabse pahle apne hi cache memory me web ki ip search krta h, ip n milne pr router ki cache memory pr web ki ip search krta h, because we are searching for this web at first time so there is no ip of searched web in laptop's & router's cache memory. So router domain name k sath DNS k pas jata h or agar DNS k pas searched domain name exist krta h to DNS router ko usi domain k ip batata h or router pahle us ip ko DNS k jaise hi domain name k sath save kr leta h or fir laptop ko us web ki ip bata deta h or fir laptop bhi us ip ko DNS k jaise hi save kr leta h or fir router ko ip batata h or fir NAT k use krke router hme us server tak pahucha deta h or server router ko uska response deta h or router fir user ko response krta h.
+ 
+ Agar wahi user thode time bad fir se wahi web search krta h to ab uska DNS us user k system hi hoga, kyoki wo system bhi kuchh time k liye DNS k jaise hi domain k sath ip save kr leta h.
+ 
+ Or agar ab us router se connected koi dusra user kuchh din me hi pahli bar wahi web search krta h jo pahla user kiya tha to bhi uske liye router fir se main DNS k server k pas nhi jayega, wo khud ek DNS k jaise hi kaam karega or apne pas save data me us domain ko search karega or ip nikal k us user k system ko bta dega.
+ 
+ 
+   Q1 :- ky router k cache memory me ip milne k baad bhi router us ip ko system k pas bhejta h y nhi.
+     Ans:- hn router us ip ko system k pas bhejega, kyu system ki request hi yhi thi ki use us domain ki IP chahiye or tab router hi DNS tha.
+     
+     
+   Q2 :- Pahli bar kisi web ko search krne pr (system-->>router-->>DNS-->>router-->>system-->>router-->>server-->>router-->>system) system us ip ko router ko batata h y fir nhi.
+     Ans:- hn system ko router se ip milne k baad bhi system router ko ip k sath ye bhi batata h ki use kaun s protocol use krna h, eska mtlb system fir se router ko ip batata h.
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                <<<<<<<<<<<--------    Services   -------->>>>>>>>>>>>
+                
+1st video---  https://drive.google.com/file/d/1i7M2y_mEy0YnnvGvcRjo1Z1s9FW00QaX/view?usp=sharing
+              https://youtu.be/nkLtcI33Fsc?si=HlgJcbQ244FdE0UH
+    
+                
+    1. OnPremitive services :-  es type ki services me use hone wali sari cheeje khud ki hoti hn. HardWare,Network,OS,Application, etc.
+    2. **IaaS (Infrastructure as a Service) :- esme networking or hardware Vendor k, or OS,Presentation,Application, etc. khud k hota h 
+    3. PaaS (platform as a service) :- esme Networking,Hardware,OS Vendor k, or presentation,App, etc. khud k hota h.
+    4. SaaS (software as a service) :- esme sari cheeje vendor ki hi hoti hn, hame only use krna hota h, ex-->  Facebook,Insta,LinkedIn...
+    
+    
+    
+               <<<<<<<<<<-----  AWS (Amazon Web Services)  ----->>>>>>>>>>
+               
+     Creating an instance---- 
+     
+        **  At first create an A/c on AWS, then login with root user on console pannel & then go with EC2 option to create an instance.
+        **  Click "Launch instance" btn & start providing instance name, OS, version of OS, instance type, key pair to create a new instance.
+         Access your instance ----
+        **1 "**ssh -i Downloads/mykey.pem ubuntu@100.26.155.241**" cmd to aces your instance by using ssh key (without using/creating pass)  
+        
+            * Your file of ssh key (mykey.pem) must have in "/home/ritik/Downloads" dir.
+            * Your working location must have current user's home dir (/home/ritik).
+            
+        **2 "**ssh ubuntu@100.26.155.241**" commad to access your instance by using password (without using ssh keys).
+            
+            * "sudo passwd ubuntu"                                         :- command to set new password for your aws machine.
+            * "sudo vim /etc/ssh/sshd_config.d/60-cloudimg-settings.conf"  :- edit this file, wrote yes in place of no.
+            * "sudo systemctl restart ssh"                                 :- command used to restart the SSH (Secure Shell) service.
+            * then logout and login into your aws machine by password.
+            
+  *********************************************************************************************************************************          
+            
+            
+2nd video---  https://drive.google.com/file/d/13ARnIGIdPWU4jNZyvR8nDSKP8JVo8gPT/view?usp=sharing
+              https://youtu.be/Or6ACW4G89w?si=w-PnEX0mma3KUhtx
+
+       UFw (Uncomplicated Firewall) :- the firewall used in Ubuntu.
+       AWS has it's own firewall named "security group".
+       
+                 <<<<<<<<<<<<-------  Web Server  ------->>>>>>>>>>>>
+                 
+         Type of web servers----
+            1. apache2 (php,html,js)
+            2. Ngnix   (php,html,js)
+            3. Tomcat  (java web app)
+            4. Flask   (python)
+            5. npm     (react)
+            
+       Hosting of website by apache2
+       
+       apache2/Ngnix      http   https
+                           80     443
+       
+         step 1.   sudo apt update
+         step 2.   sudo apt install apache2
+         step 3.   cd /var/www/html/.....
+         step 4.   systemctl status apache2  --- to check the status, active&running or not 
+         step 5.   systemctl (start/stop/restart) (ssh/apache2/....)
+         step 6.   copy your public ip and paste at browser
+         
+             Note:- your html file must have name index.html at location /var/www/html/
+                    Agar tumhe 2nd page location /var/www/html/ me bna k dekhna h to browser me ip k baad /filename.html likhna h.
+                    
+         "scp -i mykey.pem -r myprogram.zip ubuntu@100.26.155.241:. " cmd to copy zip folder from client to server's home dir.
+         "unzip myprogram.zip" cmd to extract your compressed folder at the same location.
+         
+  *********************************************************************************************************************************
+  
+ 3rd video---  https://youtu.be/QAoLfTVk1mQ?si=tfcC2uUGjLTrTGAM
+ 
+                 <<<<<<<<<<<<<-------  Adding extra valume  ------->>>>>>>>>>>>>
+                 
+        Storage :- yha apna data store hota h.     ye 3 type k hote hn.
+        
+      1. Block Storage :- * Esme data chahe jitna bda ho ye, use chote-2 block me store krta h, ek block ki size 4kb se 4mb tak ho skti h.
+                          * Or esme data store krne k liye blocks ko kisi sequence me n rakh kr kisi random location me rakh diya jata h.
+                          * Jab stored data ko use krte hn to usse related sare blocks ordr me ake us data ko complte krk hme provide krta h.
+                          ** Or jab hm window me koi new valume create krte hn, to hme storage update krne ko bola jata h eska mtlb ye data  
+                             ko delete nhi krta h, but puri storage me blocks ko ek formate me arenge krte ek empty valume create krta h.
+                          * Ye small blocks k karan bahut fast hota h, share or use krne me.
+                             
+      2. File Storage :- * Esme data diffrente files me small blocks k andar store hota h.
+                         * File storage ek bar me multiple OS k sath attach ho skta h.
+                         * Ye block storage se thoda slow hota h.
+                         
+                         
+      3. Object Storage:-* Esme object (data) ki jitni size hoti h utni hi size k blocks me data store rahta h.
+                         * mtlb agr data 20gb k h to wo 20gb k hi block me store hoga.
+                         * eske liye OS required h but ye only ek hi OS support kr sakta h.  Ex. google drive
+                         * mtlb agr esme store data ko kisi dusre OS me use krta h to pahle 1st OS se es storage ko dittach krta padega.
+                         * Or ye File storage se thoda slow hota h, because agr koi 1gb k data trnsfr ho rha h to jab tak wo pura trnsfr nhi
+                           ho jata koi bhi dusra data trnsfr nhi ho skta h chahe wo only 1mb k hi ho.
+                           
+      Storages in AWS :- 
+                   1. Amazon EBS (Amazon Elastic Block Storage)
+                   2. Amazon EFS (Amazon File System)
+                   3. Amazon S3  (Amazon Simple Storage Service)
+                   
+      Attaching sxtra volume------
+      
+           lsblk :- cmd to check all storages
+           
+           Go to Volumes section -->> Create volume -->> (type gp3, 10gb, iops 3000, Throughput 125, Ava zone check carefully, Create Volume)
+           Select created vol -->> Actions -->> Attach volume -->> (select instance where attach it, device name, Attach volume) Done...
+           
+      Partition of Volume-------   agar kisi volume me ek file crupt ho rhi h to us file se related files bhi crupt hona suru ho jati hn.
+                                   aise me boot file bhi crupt hone lagti h or pura OS crupt ho jata h jisse server hi band ho jata h.
+                                   esi liye partition jaroori h or boot file k to bahut hi jyada. esse ek data dusare se isolate rahta h.
+                                     
+           1. MBR (Master Boot Record):-  "fdisk" cmd used for partition in MBR
+                                      esme max partition 2tb tak hi ho skta h.
+               i. Primary partition:- ye totelly isolated hote hn.   Ex. c,d,e,f drive.
+                                      Primary partitions ko ek sath 3 hi bna skte ho. or max 4 hi bna skte hn.
+               ii.Extended partition:- ye totelly isolated nhi hota h, eske andar hm bahut sare folder (partition) bna skte hn.
+                                        agar extended partition krna h to primary max 3 hi hone chahiye.
+                                        
+           2. GPT (GUID Partition table):- "gdisk" cmd used for partition in GPT
+                                           esme hm 128 primary partitons bna skte hn.
+                                           esme hm 9zb [(9*10^12)gb] tak k partition kr skte hn.
+                                           
+           Steps of partition of 10Gb storage (xvdf)----------
+                "sudo fdisk /dev/xvdf" -->> m -->> n -->> p -->> 1 -->> 2048 -->> +5G -->> p -->> w  ||
+                
+	   "sudo mkfs.ext4 /dev/xvdf1" --->>> Command to creating file system
+	   "sudo mount /dev/xvdf1 /mnt" -->>> Command to attach this partition
+	   then "cd /mnt" -->> "sudo mkdir A B C D" -->> "sudo touch hello"
+	   
+	   now dittach the volume & create a new instance with the extra networking setting (subnet same reson of volume) then attach the 
+	   volume with new instance & now just mount the volume with mnt. Then you can get the partition & 4 dirs & 1 file created into mnt.
+           
+ *********************************************************************************************************************************
+ 
+  4th video :-  https://youtu.be/dc5Z9Dq5Eqo?si=nQSQMh8lPqeT9XUv
+  
+         Dynamic IP:- jab mahara instance running mode me rahta h tab to uske pas uski public IP rahti h, but jab instance stopped rahta h to
+                      uske pas koi public IP nhi hoti h. Ese hi dynamic IP bolte hn.
+         Elastic IP:- Jab hm apne Instance me Elastic IP allocate kr dete hn to fir chahe hm instance ko running mode me rakhe y fir stopped
+                      mode me uski public IP kabhi change nhi hoti h.
+                      * Or agr elastic ip ko htana h to use disassociate krn k bad release bhi krn hota h, nhi to tb tk charge lgte rhenge.
+                      
+       <<<<<<<<<<<<<<<<<<<<<<<-----------  Scaling  ---------->>>>>>>>>>>>>>>>>>>>>>>>>
+       
+         Hamara instance 1Gb storg or 1core CPU k h or usme ek web run ho rhi h, ab mana ye 100 users tak ki capecity rakhta h to agr 100 se
+         jyada users aa jayenge to website down ho jayegi eske liye hme apne instance ki capecity ko badani padegi. eske do tareeke hn.
+         
+         
+         1. Vertical Scaling:- Es method me hm same instance ki capacity increase krke 2Gb storg or 2core CPU kr dete hn jisse ab 200 users
+            aa sakenge, or apni capacity wali problem to solve ho jati h, but ek new problem ye aa jati h ki kisi bhi systm ki manually ram
+            change krne k liye use shut down krna hi pdta h, mtlb tab tak koi bhi user web k use kr hi nhi sakta h jisse to jyda loss hoga.
+            Eska use movies download krane wali webs me hota h, usme server1, server2,..... hota h.
+                                               ___
+                            ___               |   |                       ^
+                           |   |              |   |                       |
+                           |   |   ====>>     |   |   ====>>   200 users  |      {Vertically increased}
+                           |___|              |   |                       |
+                            1GB               |___|
+                                               2GB
+       
+         2. Horizontal scaling:- Es method me hm esi instance k jaisa ek aur instance le lete hn, dono ki capacity 100-100 users ki h to es 
+            tarah bhi totel 200 users website ko use kr skte hn. or hamari users wali problm solv ho jati h, but esme hamare pas do machine 
+            hn to unke alag-2 IPs or Domain Names bhi honge jisse user agr pahla domain search krta h or usme traffic bahut hota h to use fir
+            se dusara domain search krna padega tab wo web chala payega, man lo abhi to do hi instances hn to do bar hi search krna padta h,
+            fir jab or jyada traffic ho jayega to or jyada instances lagenge jisse users ko jyada problems hongi.
+            
+                            ___         ___                        ^
+                           |   |       |   |                       |
+                           |   |   +   |   |   ===>>   200 users   |      {Horizontally increased}
+                           |___|       |___|                       |
+                            1GB         1GB
+                          1.1.1.1     1.1.1.2
+        
+            Es problem ko bhi solve krne k tareeka hamare paas h ===>>> Load Balancer***
+            
+         *** Load Balancer:-  This is also a type of Instance, which has it's own IP. jab koi user hamari web search krta h to wo LB k pas 
+                              pahuchta h, or LB use kam traffic wale instance k pas pahucha deta h, jisme apni website chal rhi h.
+         
+         
+                            ___
+                           |   |
+                           |Ins|`                                            .
+                           |___|    `                                       / \
+                            1GB         `                                  /   \
+                          1.1.1.1           `                             /     \
+                                                `                        /       \
+                                                    `     <<<===        /   ELB   \     <<<===  Users
+                            ___                 `                      /           \
+                           |   |            `                         /             \
+                           |Ins|        `                            /_______________\              
+                           |___|    `
+                            1GB `                       
+                          1.1.1.2         
+         
+         
+         Ese elastic load balancer bhi kahte hn, Eske 4 types hote hn.
+         
+         1. Application LB   {only avalable for http,https (web only)}   Aap http/https k port no. change kr skte hn.
+         2. Network LB       {All TCP}  (use for High Traffic Management)
+         3. Gateway LB       {All TCP}  (use for block fake IPs)
+         4. Classic LB       {All TCP}
+         
+          Application LB:- 2 instance banane hn or dono me apache2 server se pages run karane hn.
+                           es pure ko agr short cut me krna h to Instance banate time hi no. of instances 2 kr dene hn or apache2 server or 
+                           pages banane k liye ek scripy likhenge jo ki advance setting me sabse last me likhi jati h,
+                           usme es script ko likhna h.
+                                #!/bin/bash
+                                apt update
+                                apt install apache2 -y
+                                echo "<h1> Helloooo.... This is inst One </h1>"  >  /var/www/html/index.html
+                                
+          Agr script change krni h to, Actions ==>> Instance settings ==>> edit user data ||
+          
+          Ab eske bad hme ek target group create krna h or apne instances ko us group se connect krna h.
+          Target group ==>> Create trgt grp ==>> trgt type Instances ==>> grp name ==>> HTTP ==>> IPv4 ==>> HTTP1 ==>> next ==>> select your
+                            instances to add in grp ==>> Include as pending below ==>> create trgt grp
+                            
+          Or ab hme Load balancer create krna h.
+          Load balancer ==>> create LB ==>> App LB create ==>> LB name,internate facing,IPv4 ==>> select the availability zones jisme apne
+          Instances hn ==>> default & wizard 1 ==>> Listeners and routing me select your target group ==>> create load balancer ||
+          
+          Bs ab load balancer me jakr DNS name copy krke browser me search krna h or jitni bar refresh karenge utni bar ye page switch karega
+          Load balancer page switch krne k liye "Round Robin" Algorithm k use krta h.
+          Or ab agr hm ek instance ko band kr dete hn to to fir hm chahe jitni bar refresh karenge hme only ek hi page dikhega.
+          
+ *********************************************************************************************************************************
+ 
+ 5th video:- https://www.youtube.com/watch?v=vP8bqjR0Ek8&list=PLej2oypOFA-bte890mJM_rHDeHgt2ayRv&index=1
+ 
+       <<<<<<<<<<<<<<<<<--------- Auto Scaling --------->>>>>>>>>>>>>>>>
+       
+       Auto scaling me basically ky hota h ki agr hamare instance ki capacity 300 traffic ki hi h, or traffic 295 ho chuka h or kabhi 300+
+         ho sakta h to 295 traffic me hi automatic ek new instance create ho jaye or agr traffic fir se kam ho kr 290 ho gya or etne me hi 
+         continue h to automatic hi new added instance delete ho jaye.
+       Hm usko ye bhi bta skte hn ki min ek instance chalne dena or, traffic chahe jitna aa jaye 5 instance se jyada mt create krna, or jaise
+         hi auto scaling grp start ho min 2 instance chala dena or check kr lena ki sab kuchh shi h y fir nhi or agr traffic 1 k liye hi h to
+         ek instance band kr dena, ese "Desired Capacity" bolte hn.
+       To esme hme 3 capacity deni hoti h Min, Max or Desired capacity.
+       Or agr hm starting me created dono instances ko terminte kr dete hn to ye fir se ek instance create kr deta h bcs min desired cap is 1
+       Instance ko create krne k liye uski storage,CPU,OS,key-pair,etc... ki need hoti h to eske liye hm ek "Template" create krte hn.
+       
+       Creating a launch template=======----->>>>>>>
+         templete name==>> provide guidence checked ==>> Quick start,OS,Instance type,key-pair,security group ==>> Create launch template ||
+       
+       Creating an Auto scaling group======----->>>>>>>
+         group name, select created launch template ==>> next, select zones ==>> next, No load B ==>> next, 2 desired cpcty, min 1, max 3,
+         Target tracking scaling, Avrg CPU utilization 50%, no policy, next ,next, next, review ==>> create auto scaling group ||
+         
+       "stress -c 4" ==>> es cmd se CPU utilization 100% ho jata, ye dekhne k liye hm "top" cmd chalate hn. or increase hote hi new Instance
+       create ho jata h. 
+ 
+ *********************************************************************************************************************************         
+          
+  6th Video:-  https://youtu.be/fleBMosRCFA?si=F6az18wTbnPvlyJ9
+  
+  
+    <<<<<<<<<<<<<<<<<--------- Users Groups Permissions Policies --------->>>>>>>>>>>>>>>>>
+  
+          Creating a new user in AWS:- Users ==>> Create user ==>> Attach policy (ec2 full) ==>> next ==>> Create user
+          
+          ** agr kisi IAM user ko root ki permission deni h to uski sari permissions remove krke "AdministratorAccess" name ki permission add
+          kr deni h.
+          
+          Ab agr 3-4 users ko same permissions deni h to unhe ek same group me add kr de or group ko jo permission deni wo de do.
+          
+          Agr hamara user name or pass kisi dusre ko bhi pta chal gya to wo login krke kuchh bhi kr skta h, to eske liye hm multifactor 
+          authentication k use krte hn.
+          
+          Steps-->> Users ==>> click on that user, Security credentials, Assign MFA device, Authenticator app, Scan QR & enter Codes => Done|
+          
+          
+    <<<<<<<<<<<<<<<<<---------- Creating a Database ---------->>>>>>>>>>>>>>>>>>>
+          
+          Steps = search RDS ==> Create Database ==> Standard create,MySQL,Free-tier,Create-pass,Public-access-Yes,Select-Security-Grp ||
+          RDS (Relational Database Services):- ye khud se server banata h or manage krta h es liye hm ese serverless application bolte hn.
+          
+          
+ *********************************************************************************************************************************
+ 
+   7th Video:- https://youtu.be/MIrDtT6mKrc?si=ANfhKZ3x1bCRWq7y
+   
+   
+         <<<<<<<<<<<<<<<<<<-----------  Creating a RDS server ---------->>>>>>>>>>>>>>>>>>>>
+         
+      first create a data base on MySQL, ab es data base ko connect krne k liye Koi Instance/MySQL client(in window) chahiye.
+      "sudo apt install mysql-client-core-8.0" :- cmd to install mysql client. Or ab es mysql client se data base ko connect krna h.
+      
+      "mysql -h database-2.cfe4i68kyrek.us-east-1.rds.amazonaws.com -u admin -p" :- cmd to connect data base with mysql client.
+         -h or -u ke beech me jo likha h wo endpoint hota h jo used data base pr click krte hi mil jata h or -u k bad user name likhna hota h
+         
+      or agr fir bhi ye data-base ko connect nhi kr rha to syd eske security group ne connect krne k liye allow hi n kiya ho.
+      eske liye us database k security group pr click krke ==>> edit inbound rules,add rule,All TCP,Anywhere IPv4 ==>> Save rules ||
+      Then run the same command again and enter correct pass and you got connect with the data base.
+      
+      Commands of MySQL :-    show databases;                         :- To show all databases in your machine.
+      			       create database newdatabase;            :- To create a new database named newdatabase
+      			       use newdatabase;                        :- To use newdatabase to create data on that
+      			       CREATE TABLE table-name;                :- To create a table ]"(id int, name varchar(20), city varcher(20));"]
+      			       desc tablename;                         :- To show created table.
+      			       ISERT INTO table-name (col1, col2,...); :- To enter column into table.
+      			       VALUES (value1, value2,....);           :- To enter value into table.
+      			       
+      		cmd to create table:-    mysql> create table info (
+          			         -> id int,
+          			         -> name varchar(20),
+          			         -> city varchar(20));
+          			         
+    Agr hm apne database k backup rakhna chahte hn to hme "Take snapshot" lena padta h jo jyada chargable h to ek aur option h "read replica"
+     ese create krte hi basically ek aur database create ho jata h or jo bhi hm apne database me banate hn wo sb replica me bhi bn jata h.
+     or replica bhi chargable h.
+     
+     
+  *********************************************************************************************************************************
+  
+  8th Video :- https://youtu.be/pG3ymTrMQlU?si=f4aCaHA6FXb0NZ1t
+  
+     <<<<<<<<<<<---- Cloud Watch ------>>>>>>>>>>>>
+     
+  Cloud watch k use krke hm kisi bhi Instance ki monitering ko check kr skte hn ye kaam to hm EC2 me bhi inst ko select kr k kr skte hn.
+  Cloud watch me Matrics me all matrics me EC2 me sare active or recent inactive instances ki monitorring ko bhi mention kiya gya h ab hme 
+   jis bhi instance ki monitorring krni h uski id search krkr filter kr lena h bs.
+   
+  Hm esse ye to jaan skte hn ki Hamare instance me ky ho rha h or abhi tak ky hua h but use hone se pahle kaise roka jaye eske liye hm 
+  "Cloud Watch" me ek cheej or padenge jiska name h "Alarm", ese hme monitorring ki kisi mertics me set krna h or jab ye ek particular 
+  paramiter ko pass karega to ye Alarm hit ho jayega.
+  
+  How to set a Alarm??
+  Create alarm ==>> select metrics ==>> EC2 ==>> Per-Instance-Metrics, now copy that instance's id (where you want to add this alarm) and
+   paste there to filter the metrics of that instance now choose one matrics (CPU Utilization) to add there alarm ==>> Select metrics ,
+   and set there "Greater & Equal" and 50% of CPU Utilization to hit this alarm ==>> Next, remove notification section also (chargable),
+   ==>> Next , named your alarm ==>> Next ==>> Create Alarm ||
+   
+   
+   <<<<<<<<<<<------- /var/log ------->>>>>>>>>>>>              (eske andar users ki activity save hoti h.)
+   
+   
+    "/var/log/apache2/error.log" :- agar galti se /var/www/html/index.html file delete ho jati h, or koi user instance ki ip dal kr use
+     dekhna chahta h to kyuki waha pr file hi nhi h to use error milegi or agr koi bhi error aati h to wo esi file me save hoti h.
+     
+    "/var/log/apache2/access.log" :- es file k andar us user ki ip or bahut sari cheeje hoti hn. jaise agr kisi ne hamare instance me chal
+                                      rhe web ko access kiya to uski sari details hamare pas aayegi
+    ab agr pta krna h ki hamari web ko kitni bar search kiya gya h mtlb abhi tk kitna traffic aaya h to eske liye hm access.log me lines ko 
+    count krke pta kr skte hn. bcs user k access krne pr user ki sari details access.log pr save ho jati h.
+    
+    
+    EC2 :- Infrastructure as a service. (Amazon Elastic Compute Cloud)
+    RDS :- Relational Data-Base Services, ye ek database services h 
+    S3  :-(Software as a services) Simple Storage Services, y Amazon ki ek service h, jo 1-2GB tk free h, esme data 99.999..% secure rahta h.
+    DynamoDB:- ye bhi Amazon ki ek service h, jisme data Non-tabular(NoSQL) form me rahta h.
+    Lambda:- ye ek Platform as a service h, esme hm apna code dalte hn or kuchh bhi kam krwa skte hn, wo code chahe html,js,python, y fir 
+             jiska bhi ho ye sb kuchh support krta h, wo hme jiski hm chahte hn uski machine create krke de deta h.
+    Elastic Beanstalk:- ye Amazon ki ek aisi service h jo hme jaroorat k hisab se instance bhi create kr dega or agr or accha server chahiye
+                        to ye load balancer bhi create krke de dega, ese use krne k to koi charge nhi h but ye jo kuchhh bhi create krega 
+                        agr wo chargable h to ye uska bhi charge lega.
+         
+         
+  *********************************************************************************************************************************
+  
+  9th Video:- https://drive.google.com/file/d/1sGpErpQOOGvkO0Pw5eEoG5M7OM2iczI7/view
+  
+       <<<<<<<<<<<<<-----------  Git & Github (GUI) ----------->>>>>>>>>>>>>>
+       
+    Github k use apne code ko store krne k liye kiya jata h.
+    Git k use stored code ko maintain rakhne me hota h. Esme hm apne sare commits k code ko dekh skte hn.
+    
+    Fork :- kisi dusre ki repo fork krne pr wo repo hamare repo me aa jati h, or hm usme change krke uske owner k pas hamare kiye gye change
+            ko apn repo me add krn k liye ek request send krte hn, jise "Open Pull Request" kahte hn. ye usi edited repo me ja kr Contribute
+            section me hota h. or fir ye req owner k pas jayegi wo hamare edited code ko dekhega, agr use accha lagega to wo hamari pull req
+            ko "Merge" kr dega or uski repo me hamara code edit ho jayega.
+            
+            Agr kisi ne line no. 4 me change krke PR send kiya tha or Owner ne PR ko Merge kr diya h or ab fir kisi dusre ne line no.4 me hi
+             PR send kr di h to ab Owner us dusri PR ko Merge nhi kr skta h kyoki ek bar us line me change ho chuka h, agr use Merge hi krna
+             h to use line no.4 k code delete krna hoga.
+            Esk liye Github me bhi "Resolve Conflict" name k ek optn aane lga h. jisme ky hota h ki dono (PR send krne wale) logo k changes
+             us code me line by line rahte hn, or fir aap PR Merge kr skte hn.
+             
+            Or agr aapko Conflict nhi chahiye to aap pahle "Sync Fork" kare fir uske bad PR generate kare to conflict nhi hoga. 
+            
+            Jaise acchi companies me 1 project me bahut log kam kr rhe hote hn to wo bhi apna code likh kr use github me dal dete hn to sara
+             code hme mil jata h or hm check kr lete hn, but esme ek problem h ki esme pta kaise chalega ki kisne ky commit kiya h kyoki ek 
+             hi repo me sare kaam kr rhe hn to eske liye github me ek or tareeka h "Branch" name k esme sare devlopers k liye diff branches 
+             hoti hn or wo sab apni-2 branch me kaam krte hn.
+         
+         
+  *********************************************************************************************************************************
+         
+  10th Video :- https://youtu.be/E4lTCnpbOUY?si=jS_5rHd-vhEQwx9e
+  
+         
+         <<<<<<<<<<<<<-----------  Git & Github (CLI) ----------->>>>>>>>>>>>>>
+         
+    Terminal se code push krne k liye first time github email or user name add krne k liye commands
+        'git config --global user.email "example@gmail.com"'   cmd to add gmail at terminal.
+        'git config --global user.email "ritiksingh-06"'   cmd to add user name at terminal.
+        
+    Jab hm CLI se pahli bar code push krte hn to wo hmse user name or pass puchhta h, but ab password wala method Aug 2021 se hat chuka h or
+     ab se pass k jagah me token no. dala jata h, ye token no. generate kiye jate hn, or ye unique hote hn koi bhi hamara user name or token
+     no. lekr hamari repo me change kr skta h. hm apne token ki permissions ko bhi manage kr skte hn.
+     
+    Creating token:- Github profile => settings => Developer settings => Personal access tokens => Tokens(Classic) => Generate new Token ||
+    
+    "git push" cmd ko usi repo me jakr chalana hota h.
+    Aap usi repo me CLI k through push kr skte ho jise aapne clone kr k apne pas rakha h.
+    
+    Or agr aapne abhi terminal me koi new folder banaya h or use kisi repo jo clone nhi ki gyi h usme push krna h to eske liye kuchh Cmds hn.
+    Mtlb ye hua ki kisi folder ko repo me kaise add krte hn bina repo ko fork kiye.
+    
+          1.  echo "# demoexist"  >>  README.md                                           (Creating a Readme file)
+          2.  git init                                                                    (Es cmd se usi locatn pr ".git" folder ban jata h)
+          3.  git add .                                                                   
+          4.  git commit -m "first commit"
+          5.  git branch -M main                                                          (Esse hm brnc chng krte hn jisme code push krna h)
+          6.  git remote add origin https://github.com/ritiksingh-06/demorepo.git         (Add your created folder at that repo where u want)
+          7.  git push
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+ ****************************************************************.*****************************************************************
+ *************************************************************.     .**************************************************************
+ **********************************************************.  DEVOPS  .**********************************************************
+ *************************************************************.    .**************************************************************
+ ***************************************************************.*****************************************************************
+ 
+ 
+      <<<<<<<<<<<<<<----------  Docker  ----------->>>>>>>>>>>>>>>>
+      
+   First tool of DevOps => Docker
+   
+   Man lo hamare pas ek python k code h or use run krna h to uske liye hme ek VM banana padega or usme python k setup krna padega fir usme 
+    code run kr skte hn es pure kam me 30 min se jyada time lagega, or ab agr kisi ne bol diya ki mere pas JAVA k code h to fir se uske setup
+    me utna hi time lagega or hm apne system me bhi limited VM hi bna skte hn jiska mtlb ye hn ki ye sari cheeje bahut complex hone wali hn
+    to ese hi solve krne k liye Docker bna h ye within 1 min me hi sara setup krke hamara koi bhi code run kr skta h.
+    
+    
+    
+                            VM                                       Docker
+                            
+                 Guest OS(Kernal) presents                     System k Kernal use kr leta h.
+                 Total ISO file size 4.7GB                     Totel ISO(Docker Image) file size 1.5GB
+                 Time consuming                                Time saving
+                 Every OS supports it shoftly                  Only Linux supports docker
+                 
+    But Every OS supports "Docker Desktop"             
+    Container run karane wale tools :-  Docker*, Podman, Rocket, Crio 
+    
+    Docker       :-   Engine, that run/create container
+    Container    :-   VM
+    Docker image :-   ISO file
+    Docker registry :- Where docker images are stored  (DockerHub)
+    
+    
+    ECR (Elastic Container Registry) :- Amazon docker registry
+    ACR (Azure Container Registry) :- Azore docker registry
+    
+    Installation of Docker in Ubuntu :-
+    
+           1. sudo apt update
+           2. sudo apt install docker.io
+           3. sudo docker version/--version
+           4. sudo docker ps          :- To show how many containers are running now.
+              sudo docker ps -a       :- to show all running or previous run docker containers.
+           5. sudo docker pull ubuntu :- to download docker image.
+           6. sudo docker images      :- to show all images.
+           7. docker run ubuntu date  :- to create an OS to run date command.
+           8. docker run ubuntu sleep 15:- to run a container for 15sec (but 15 sec tak hm terminal k use bhi nhi kr skte hn.)
+           9. docker run -d ubuntu sleep 15:- to run a container for 15sec in background (abhi hm apna terminal use kr skte hn.)
+           10. docker run -d --name ritik ubuntu sleep 300:- run a container by naming it, itself.
+           11. docker exec -it ritik bash :- to go into container, usk andr kam krn k liy shell chahiye to shell k name, agr cntnr chalu h to
+           12. docker run -it --name ritik1 ubuntu bash:- ye container chalta hi rahega kyu ki ese kamm hi yhi mila h ki bash shell chala k
+                                                          rakhega, ye container tab tak chalega jab tak hm container ko Ctrl+c nhi krte.
+           13. docker start/stop cntnr name/id :- to start/stop a stopped/started container. id k ek do digit bhi likh skte hn but unique ho.
+           14. docker rm container name/id :- to delete stopped containers. multiple k liye space dekr name/id likhna hota h.
+           15. docker rmi image-name :- to delete docker image, nam k bad tag bhi likha jata h nhi to by default ye latst ko delete kr deta h
+           16. docker tag myimage newimage :- to create a new image (newimage) with having same data of our old created image (myimage)
+           
+           
+           Or agr koi container kisi image k through running h to tab tak docker image ko delete nhi kiya ja skta h.
+                                                          
+           "-it" use krne se hm container banate hi uske andar chale jate hn, uske andar alag se jana nhi padta h.
+           "Ctrl + p + q" :- container ko band kiye bina container se bahar aane k liye ye short key use hoti hn.
+           
+           docker run alpine ping google.com :- ping cmd ko bina install kiye "Alpine" OS se chalana.
+           
+           
+           
+  ***************************************************************.*****************************************************************
+           
+           
+  2nd video :- https://youtu.be/mcBANOYmUPA?si=s65MT8g_rSlVOWPP
+  
+     <<<<<<<<<<<<<<<<<<<  -----------------  Creating own "Docker Image" with our requirements ---------- >>>>>>>>>>>>>>>
+     
+     
+     Man lo hme koi setup krna h or wo hme daily chahiye, uske liye hmne docker image se ek container banaya or usme apn setup kr liya lekin
+      jaise hi hm container delete krenge or fir se new container create karenge to hme fir se apna setup krna padega.
+     To es problem k ek solution ye h ki jis container me hmne apna setup kiya tha usi container ki ek Image create kr le, jisse hamari ek 
+      apni Image create ho jayegi or ab jo bhi container hm create karenge usme apni new created Image k use karenge or es bar hamare new 
+      created container me hamara sara setup pahle se hi rahega..
+      
+      STEPS ---------
+      
+     ** first create a container which id starts with f7d44,now install here ncal cmd and create some directories at here. And now create an
+         image of this container by using following cmd.....
+      
+     ** docker commit docker-name/id new-image-name :-   cmd to create new docker image(updated ISO file) by a running container
+        (docker commit f7d44 myimage)
+        
+     ** Now create a new container by using our new created image (myimage) by cmd (docker run -it myimage bash) and now you are are able to
+         run "cal" cmd and ls here to see your created directories.
+         
+         
+     Or ab man lo hmne 2-3 ghante me koi ek setup kiya h or ab bahut sare system me wahi same setup krna h to hme fir se sabhi k liye 2-3 
+      ghante lagenge, to eske liye ek solution h jiska name h "Docker Hub" jaha pr hm apni Images ko store kr skte hn.
+      
+     
+     How to push your newlly created docker image at Docker Hub------------
+     STEPS------------
+     
+     ** "docker login" cmd to login on your Docker Hub ac by CLI, now enter your user-name and password to login here.
+     ** "docker tag myimage username/myimage" cmd to rename our created image because image name must start with your dockerhub user name.
+     ** "docker push username/myimage" cmd to push your image globlly at Docker Hub.
+     
+     Or ab meri es image (ritiksingh06/myimage) ko globally koi bhi pull kr skta h or usse use kr skta h.
+     Docker Hub me hm only 1 repo private rakh skte hn 1 se jyada private rakhne k liye ac upgrade krna padega.
+     
+     Task :- Run a C code on your container and create an image of this container and share the link of your docker image.
+     
+         first install gcc compiler to compile the code of C then write the code of C in sample.c file now compile the code written in 
+           sample.c by using command "gcc -o demo sample.c" and now run this compiled code "demo" by cmd "./demo"      ||DONE||
+     
+     
+     
+  ***************************************************************.*****************************************************************
+  
+  
+      "usermod -aG docker username" :- cmd to add a user into "docker" group, which added user can use any cmd without using sudo word at fst
+         
+     TASK :- first create a container by using ubuntu docker image, and into this container install gcc compiler of C and add a code of C in
+              a file named count.c and now compile the C code with cmd "gcc -o count count.c" and then you got a new file "count" of compiled
+              C code, now copy your file "count" at /bin then you are able to run your c code by only type "count" at your terminal.
+             Now create an image (ritiksingh06/count) of this container and push this image at Docker Hub.
+             
+             
+   <<<<<<<<<< Docker File >>>>>>>  
+   
+      Es ek file me wo sare steps likhe hote hn jo hm manually krte hn, image use krke container banana or container me setup krke fir se 
+       uski ek image banana, ye sare steps hm ek hi file me note down krke use run kr denge or hme ek image create ho kr mil jayegi.
+         
+         
+         
+         
+         
+         
+         
+         ky load balacer k bhi domain name hota h. agr hnn to fir ky un instances k domain name nhi hota jo LB k through connect rahte hn???
+         
+  Steps in written in "Dockerfile" file, your file must have this code to execute it's code.-------------
+         
+      1.  "FROM gcc"               :- "FROM" is use to download/get image from docker hub, so we need gcc compiler, so we write gcc at there.
+      2.  "COPY count.c /"         :- "COPY" word is used for coping file "count.c" at home dir(/) of our container.
+      3.  "RUN gcc -o count /count.c" :- "Run" is used to run a command to compile the the C code of file count.c and store at file count.
+      4.  'CMD ["/count"]'         :- "CMD" is used to run a dedicated command when we run a container using this image.
+      
+     ** "docker build -t newimage ." :- Now run this cmd to create an image by your code & dot (.) represents the path of your Dockerfile.
+     ** "docker run newimage" :- Now run this cmd to run a container by using newimage & then suddenly you get the output of your C code 
+                                  because you mentioned there a dedicated cmd jo ki, us image ko use krke container banate hi run ho jayegi.
+      
+             
+             
+                 
+                
+ 
+   
+   
+   
+   
+   
+   
+   netcat server   ---->>>>  chatting platform 
+   
+   brodcast ip ??
+   gateway ip ??
+   First time server ip k liye router se kaise connect krta h  
+   
+   
+   
+   
+         
+      
+      
+      
+      	
