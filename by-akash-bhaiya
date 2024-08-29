@@ -814,6 +814,7 @@ Touch command:-   ye command new empty file create karne k kaam aati h.
            3. sudo docker version/--version
            4. sudo docker ps          :- To show how many containers are running now.
               sudo docker ps -a       :- to show all running or previous run docker containers.
+              sudo docker ps -aq      :- to show all running containers id only
            5. sudo docker pull ubuntu :- to download docker image.
            6. sudo docker images      :- to show all images.
            7. docker run ubuntu date  :- to create an OS to run date command.
@@ -826,7 +827,8 @@ Touch command:-   ye command new empty file create karne k kaam aati h.
            13. docker start/stop cntnr name/id :- to start/stop a stopped/started container. id k ek do digit bhi likh skte hn but unique ho.
            14. docker rm container name/id :- to delete stopped containers. multiple k liye space dekr name/id likhna hota h.
            15. docker rmi image-name :- to delete docker image, nam k bad tag bhi likha jata h nhi to by default ye latst ko delete kr deta h
-           16. docker tag myimage newimage :- to create a new image (newimage) with having same data of our old created image (myimage)
+           16. docker rm -f $(docker ps -aq) :- cmd to remove all running containers.
+           17. docker tag myimage newimage :- to create a new image (newimage) with having same data of our old created image (myimage)
            
            
            Or agr koi container kisi image k through running h to tab tak docker image ko delete nhi kiya ja skta h.
@@ -917,17 +919,54 @@ Touch command:-   ye command new empty file create karne k kaam aati h.
       4.  'CMD ["/count"]'         :- "CMD" is used to run a dedicated command when we run a container using this image.
       
      ** "docker build -t newimage ." :- Now run this cmd to create an image by your code & dot (.) represents the path of your Dockerfile.
+        "docker build -t newimage -f mydockerfile"
      ** "docker run newimage" :- Now run this cmd to run a container by using newimage & then suddenly you get the output of your C code 
                                   because you mentioned there a dedicated cmd jo ki, us image ko use krke container banate hi run ho jayegi.
+                                  
+     By default "docker build" cmd run krne pr ye "Dockerfile" name ki docker file ko hi run krke image create krta h. but agr aapki 
+      docker file kisi dusre name se h to aapko ek extention add krna hoga, (-f mydockerfile)
       
              
+  ***************************************************************.*****************************************************************
+  Set up apache server by creating Docker file with docker image (httpd)
+  
+      * first create a html file must have name "index.html", and now create a Docker file with following elements:
+             "FROM httpd"
+             "COPY index.html /usr/local/apache2/htdocs/"
+      *"docker build -t myweb ." cmd to build docker image.
+      *"docker run -d -p 1133:80 myweb" cmd to run a container by using image "myweb", at port no. 1133.
+      
+      to see your web, these are Urls:- "localhost:1131", "127.0.0.0:1131", "public-ip:1131" & "dockercontainer-ip:1131".
+      
+      
+      
              
+  ***************************************************************.*****************************************************************
+  Set up Worldpress server by docker container, with AWS mysql RDS database, by using "worldpress" docker image.
+  
+  * first create a mysql database on AWS. let DB name = worldpress, user = admin, password = Q12345678.
+  * "docker run -d --name wordpress -e WORDPRESS_DB_HOST='....(fill end point here)....' -e WORDPRESS_DB_USER=admin -e WORDPRESS_DB_PASSWORD
+     =Q12345678 -e WORDPRESS_DB_NAME=wordpress -p 1155:80 wordpress"
+  
+  Or ab browser me "public-ip:1155" search krke waha user create krke aasani se wordpress use kr skte hn.
+  
+  "docker volume create myvol"   :- cmd to create a new volume named "myvol"
+  "docker volume ls"             :- cmd to show all docker volumes
+  "docker volume rm volume-name" :- cmd to remove a docker volume
+  "docker run -itd -v myvol:/mnt ubuntu" :- cmd to add this volume(myvol) with a new container.
+  
+  Now go into the created container and at /mnt and create some folder&files at there.
+  or ab es container ko delete kr dena h, or fir dusra container banakr usi volume "myvol" ko usse connect kr dena h, previous commands k use
+    krke, or fir hm /mnt pr jakar dekhenge to waha pr hamari created sare folders&files whi pr dikh jayengi.
+    
+  Docker me 3 type k network hote hn, we can see all these by using cmd "docker network ls" :-- bridge, host, none
+  "docker run -itd --network none ubuntu" :-command to create container with network "none".
+                                            It has no ip we can check it's IP by "docker inspect hc | grep IPA"
+  by default jab hm container banate hn to usme "bridge network" use hota h.
                  
                 
  
-   
-   
-   
+   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             ----- important code
    
    
    
@@ -943,5 +982,4 @@ Touch command:-   ye command new empty file create karne k kaam aati h.
          
       
       
-      
-      	
+     
