@@ -6,6 +6,17 @@
 
 
 
+# Optionally, add 'user1' to the sudoers file to grant sudo privileges
+usermod -aG wheel user1
+
+
+
+
+
+echo "hello world" > /hello.txt           permission denied , bcos "/" andr only root ko hi read ki permission hoti h.
+sudo echo "hello world" > /hello.txt      permission denied , ab root ki permission to hamare pas h but ">" redirection ko shell ne restrict
+                                                              kr rakha h, jisse hm wha write nhi kr skte hn.
+echo "some text" | sudo tee /filename     now we get created a file named "hello.txt" into "/"
 
 
 
@@ -965,6 +976,23 @@ Touch command:-   ye command new empty file create karne k kaam aati h.
   by default jab hm container banate hn to usme "bridge network" use hota h.
                  
                 
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+    rsyslog :- This a loging server which maintain logs of other server like ssh, ftp, httpd.
+
+    /var/log :- default path of all log files & folders
+    
+    
+    
+    
  
    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             ----- important code
    
@@ -974,12 +1002,62 @@ Touch command:-   ye command new empty file create karne k kaam aati h.
    
    brodcast ip ??
    gateway ip ??
-   First time server ip k liye router se kaise connect krta h  
-   
-   hellkqjowjokwo  
+   First time server ip k liye router se kaise connect krta h   
    
    
    
+   
+   
+   
+   
+   
+   Script to create two users in nginx server at aws instance and your web pages must present(in order) at home directories of users,
+   
+#!/bin/bash
+   dnf install nginx -y
+   dnf install vsftpd -y
+   adduser user1
+   echo "user1:Redhat@12345" | chpasswd
+   adduser user2
+   echo "user2:Redhat@12345" | chpasswd
+   echo "PasswordAuthentication yes" > /etc/ssh/sshd_config.d/50-cloud-init.conf
+   echo "<h1>This is for web1</h1>" > /home/user1/index.html
+   echo "<h1>This is for web2</h1>" > /home/user2/index.html
+   chown user1:user1 /home/user1 -R
+   chmod 755 /home/user1 -R
+   chown user2:user2 /home/user2 -R
+   chmod 755 /home/user2 -R
+   
+   echo "server {
+           listen       80;
+           listen       [::]:80;
+           server_name  test1.com;
+           root         /home/user1/;
+            access_log  /home/user1/access.log  main;
+      	    error_log /home/user1/error.log;
+       }" > /etc/nginx/conf.d/user1.conf
+   echo "server {
+           listen       80;
+           listen       [::]:80;
+           server_name  test2.com;
+           root         /home/user2/;
+            access_log  /home/user2/access.log  main;
+            error_log /home/user2/error.log;
+       }" > /etc/nginx/conf.d/user2.conf
+   setenforce 0
+   systemctl enable --now nginx
+   systemctl enable --now vsftpd
+   
+   echo "setenforce 0
+         systemctl restart nginx
+        " >> /etc/rc.d/rc.local
+   chmod +x /etc/rc.d/rc.local
+
+
+
+
+
+
    
          
       
